@@ -378,7 +378,8 @@ class BulkForm extends FieldPluginBase implements CacheableDependencyInterface {
         $options = [
           'query' => $this->getDestinationArray(),
         ];
-        $form_state->setRedirect($operation_definition['confirm_form_route_name'], [], $options);
+        $parameters = \Drupal::routeMatch()->getRawParameters()->all();
+        $form_state->setRedirect($operation_definition['confirm_form_route_name'], $parameters, $options);
       }
       else {
         // Don't display the message unless there are some elements affected and
